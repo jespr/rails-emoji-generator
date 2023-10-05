@@ -2,6 +2,8 @@ class Emoji < ApplicationRecord
   has_one_attached :original
   has_one_attached :without_background
 
+  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji" }
+
   def generate_emoji!
     model = Replicate.client.retrieve_model("fofr/sdxl-emoji")
     version = model.latest_version
