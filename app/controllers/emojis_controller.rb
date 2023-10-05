@@ -18,7 +18,7 @@ class EmojisController < ApplicationController
 
     respond_to do |format|
       if @emoji.save
-        format.html { redirect_to emoji_url(@emoji), notice: "Emoji was successfully created." }
+        format.html { redirect_to emoji_url(@emoji), notice: "Emoji was successfully created and is now processing..." }
         format.json { render :show, status: :created, location: @emoji }
       else
         format.html { render :new, status: :unprocessable_entity }
