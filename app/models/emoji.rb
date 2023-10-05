@@ -18,5 +18,6 @@ class Emoji < ApplicationRecord
   def attach_output_image!(output_url)
     require 'open-uri'
     original.attach(io: URI.open(output_url), filename: "emoji.png")
+    update!(status: :completed)
   end
 end

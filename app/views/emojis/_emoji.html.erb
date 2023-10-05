@@ -1,11 +1,25 @@
 <%= turbo_stream_from :emoji %>
 
 <%= turbo_frame_tag dom_id(emoji) do %>
-  <div id="<%= dom_id emoji %>">
+  <div id="<%= dom_id emoji %>" class="space-y-4">
     <p class="my-5">
-      <strong class="block font-medium mb-1"><%= link_to emoji.prompt, emoji, class: "text-blue-500 hover:underline" %></strong>
+      <strong class="block font-medium mb-1 flex items-center space-x-2">
+        <%= link_to emoji.prompt, emoji, class: "text-blue-500 hover:underline", data: { turbo_frame: "_top" } %>
+        <%= tag.span class: class_names("rounded py-1 px-2 text-xs flex items-center gap-x-1", "bg-slate-400 text-slate-50": emoji.processing?, "bg-green-400 text-green-50": emoji.completed?) do %>
+          <% if emoji.processing? %>
+            <svg class="animate-spin -ml-1 h-3 w-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          <% end %>
+          <%= emoji.status %>
+        <% end %>
 
-      <%= image_tag url_for(emoji.original), width: 300, height: 300 if emoji.original.persisted? %>
+      </strong>
+
+      <div>
+        <%= image_tag url_for(emoji.original), width: 300, height: 300 if emoji.original.persisted? %>
+      </div>
     </p>
   </div>
 <% end %>
