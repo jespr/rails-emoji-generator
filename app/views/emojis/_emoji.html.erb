@@ -17,9 +17,11 @@
 
       </strong>
 
-      <div>
+      <% if emoji.processing? %>
+        <%= tag.div class: "w-[300px] h-[300px] bg-slate-500 animate-pulse" %>
+      <% else %>
         <%= image_tag url_for(emoji.original), width: 300, height: 300 if emoji.original.persisted? %>
-      </div>
+      <% end %>
     </p>
   </div>
 <% end %>
