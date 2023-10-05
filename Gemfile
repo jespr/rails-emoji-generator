@@ -69,3 +69,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "replicate-ruby", "~> 0.2.3"
