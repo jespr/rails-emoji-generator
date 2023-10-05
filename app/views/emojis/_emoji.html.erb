@@ -1,0 +1,7 @@
+<div id="<%= dom_id emoji %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1"><%= link_to emoji.prompt, emoji, class: "text-blue-500 hover:underline" %></strong>
+
+    <%= image_tag url_for(emoji.original) if emoji.original.persisted? %>
+  </p>
+</div>
