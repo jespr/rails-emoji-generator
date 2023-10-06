@@ -4,7 +4,9 @@ class Emoji < ApplicationRecord
 
   enum status: { processing: 0, completed: 1, failed: 2 }
 
-  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji" }
+  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji_index" }
+
+  validates :prompt, presence: true
 
   def generate_emoji!
     model = Replicate.client.retrieve_model("fofr/sdxl-emoji")

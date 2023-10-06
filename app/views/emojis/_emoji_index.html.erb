@@ -1,0 +1,10 @@
+<%= turbo_frame_tag dom_id(emoji), class: "flex flex-row no-gap" do %>
+  <div id="<%= dom_id emoji %>" class="bg-white rounded shadow w-full p-2 flex space-x-1 items-center text-slate-600">
+    <% if emoji.processing? %>
+      <div class="w-[30px] h-[30px] bg-slate-500 animate-pulse rounded-sm"></div>
+    <% else %>
+    <% end %>
+    <%= image_tag url_for(emoji.without_background), width: 30, height: 30 if emoji.without_background.persisted? %>
+    <span class="font-mono">:<%= emoji.prompt %>:</span>
+  </div>
+<% end %>

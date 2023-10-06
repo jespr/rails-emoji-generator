@@ -2,13 +2,7 @@ class EmojisController < ApplicationController
   before_action :set_emoji, only: %i[ show destroy ]
 
   def index
-    @emojis = Emoji.all
-  end
-
-  def show
-  end
-
-  def new
+    @completed_emojis = Emoji.where(status: :completed).order(created_at: :desc).all
     @emoji = Emoji.new
   end
 
@@ -18,7 +12,7 @@ class EmojisController < ApplicationController
 
     respond_to do |format|
       if @emoji.save
-        format.html { redirect_to emoji_url(@emoji), notice: "Emoji was successfully created and is now processing..." }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
       end

@@ -1,14 +1,26 @@
-<div class="w-full">
+<div class="w-full my-8">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Emojis</h1>
-    <%= link_to 'New emoji', new_emoji_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="py-[10vh]">
+    <div class="text-center space-y-4">
+      <h1 class="font-bold text-4xl">Rails Emojis</h1>
+
+      <p class="text-gray-500">
+        This is a Rails Emoji Generator inspired by <%= link_to "Alexandru's example", "https://emojis.alexandru.so/", class: "text-pink-400 hover:underline" %>.
+      </p>
+    </div>
+
+    <%= render "form", emoji: @emoji %>
+
   </div>
 
-  <div id="emojis" class="min-w-full">
-    <%= render @emojis %>
+  <h2 class="font-bold mb-4 text-slate-600">Recently created emojis</h2>
+  <%= turbo_stream_from :emoji %>
+  <div id="emojis" class="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-items-stretch w-full">
+    <% @completed_emojis.each do |emoji| %>
+      <%= render "emojis/emoji_index", emoji: emoji %>
+    <% end %>
   </div>
 </div>

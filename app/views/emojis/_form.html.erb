@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :prompt %>
-    <%= form.text_field :prompt, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="my-5 flex-col">
+    <%= form.text_field :prompt, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full placeholder:text-slate-300", placeholder: "cat" %>
   </div>
 <% end %>
+
+<div class="grid grid-cols-1">
+  <%= turbo_frame_tag :generated_emoji, class: "grid-cols-1" %>
+</div>
