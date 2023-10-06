@@ -1,5 +1,5 @@
 class EmojisController < ApplicationController
-  before_action :set_emoji, only: %i[ show destroy ]
+  before_action :set_emoji, only: %i[ destroy ]
 
   def index
     @completed_emojis = Emoji.where(status: :completed).order(created_at: :desc).all
