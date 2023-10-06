@@ -9,6 +9,9 @@ console_command = "/rails/bin/rails console"
 
 [build]
 
+[env]
+  RAILS_STORAGE = "/data/storage"
+
 [[mounts]]
   source = "data"
   destination = "/data"
