@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :emojis, only: %i[index show new create destroy]
+  resources :emojis, only: %i[index show create destroy]
   namespace :webhooks do
     resources :emojis, only: :create
     resources :backgrounds, only: :create

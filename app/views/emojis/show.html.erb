@@ -1,0 +1,9 @@
+<div class="p-4 bg-white shadow-md rounded w-full">
+  <h1 class="font-mono text-2xl font-slate-700 font-semibold text-center"><%= @emoji.prompt %></h1>
+
+  <%= image_tag url_for(@emoji.without_background), width: 200, height: 200, class: "mx-auto" if @emoji.without_background.persisted? %>
+
+</div>
+<div class="mt-8 text-center">
+  <%= link_to "back", root_path %>
+</div>

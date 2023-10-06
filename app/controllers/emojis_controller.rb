@@ -6,6 +6,10 @@ class EmojisController < ApplicationController
     @emoji = Emoji.new
   end
 
+  def show
+    @emoji = Emoji.find(params[:id])
+  end
+
   def create
     @emoji = Emoji.new(emoji_params)
     @emoji.generate_emoji!
