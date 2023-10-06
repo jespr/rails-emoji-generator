@@ -1,1 +1,2 @@
-<%= turbo_stream.replace :generated_emoji, partial: "emojis/emoji_index", locals: { emoji: @emoji } %>
+<%= turbo_stream.prepend :generated_emoji, partial: "emojis/generated_emoji", locals: { emoji: @emoji } %>
+<%= turbo_stream.set_value("#emoji_prompt", "") %>
