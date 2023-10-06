@@ -18,9 +18,7 @@
 
   <h2 class="font-bold mb-4 text-slate-600">Recently created emojis</h2>
   <%= turbo_stream_from :emoji %>
-  <div id="emojis" class="grid grid-cols-1 sm:grid-cols-2 gap-2 justify-items-stretch w-full">
-    <% @completed_emojis.each do |emoji| %>
-      <%= render "emojis/emoji_index", emoji: emoji %>
-    <% end %>
-  </div>
+  <%= turbo_stream_from :emojis %>
+
+  <%= render "emojis", emojis: @completed_emojis %>
 </div>
