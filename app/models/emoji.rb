@@ -4,7 +4,8 @@ class Emoji < ApplicationRecord
 
   enum status: { processing: 0, completed: 1, failed: 2 }
 
-  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji_index" }
+  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji_index" }, if: -> { completed? }
+  after_update_commit -> { broadcast_prepend_to :emojis, partial: "emojis/emoji_index", locals: { emoji: self } }, if: -> { completed? }
 
   validates :prompt, presence: true
 
@@ -13,8 +14,6 @@ class Emoji < ApplicationRecord
     version = model.latest_version
 
     prediction = version.predict({ prompt: "A TOK emoji of a #{prompt}" }, "#{Rails.application.credentials.webhook_host}/webhooks/emojis")
-
-    pp prediction
 
     self.update!(prediction_id: prediction.id)
   end
