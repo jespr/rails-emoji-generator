@@ -12,14 +12,15 @@ class EmojisController < ApplicationController
 
   def create
     @emoji = Emoji.new(emoji_params)
-    @emoji.generate_emoji!
 
-    respond_to do |format|
-      if @emoji.save
-        format.turbo_stream
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @emoji.save
+      @emoji.generate_emoji!
+    else
+      render turbo_stream: turbo_stream.update(
+        view_context.dom_id(@emoji, :form),
+        partial: "emojis/form",
+        locals: { emoji: @emoji }, status: :unprocessable_entity
+      )
     end
   end
 

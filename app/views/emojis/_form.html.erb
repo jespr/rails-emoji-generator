@@ -1,21 +1,23 @@
-<%= form_with(model: emoji, class: "contents") do |form| %>
-  <% if emoji.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(emoji.errors.count, "error") %> prohibited this emoji from being saved:</h2>
+<%= turbo_frame_tag dom_id(emoji, :form) do %>
+  <%= form_with(model: emoji, class: "contents") do |form| %>
+    <% if emoji.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(emoji.errors.count, "error") %> prohibited this emoji from being saved:</h2>
 
-      <ul>
-        <% emoji.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% emoji.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="my-5 flex-col">
+      <%= form.text_field :prompt, class: "font-mono block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full placeholder:text-slate-300 focus:ring-2 focus:ring-blue-200", placeholder: "cat" %>
     </div>
   <% end %>
 
-  <div class="my-5 flex-col">
-    <%= form.text_field :prompt, class: "font-mono block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full placeholder:text-slate-300 focus:ring-2 focus:ring-blue-200", placeholder: "cat" %>
+  <div class="grid grid-cols-1">
+    <%= turbo_frame_tag :generated_emoji, class: "grid-cols-1" %>
   </div>
 <% end %>
-
-<div class="grid grid-cols-1">
-  <%= turbo_frame_tag :generated_emoji, class: "grid-cols-1" %>
-</div>
