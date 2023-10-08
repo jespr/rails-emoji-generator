@@ -1,8 +1,9 @@
-<div class="p-4 bg-white shadow-md rounded w-full">
+<div class="p-4 bg-white shadow-md rounded w-full text-center space-y-8">
   <h1 class="font-mono text-2xl font-slate-700 font-semibold text-center"><%= @emoji.prompt %></h1>
 
   <%= image_tag url_for(@emoji.without_background), width: 200, height: 200, class: "mx-auto" if @emoji.without_background.persisted? %>
 
+  <%= link_to "Download", rails_blob_path(@emoji.without_background, disposition: :attachment), class: "rounded py-2 px-4 font-medium shadow hover:shadow-md hover:translate-y-[-1px] transition outline outline-slate-300/20 text-gray-500 hover:text-gray-600 bg-gradient-to-t from-slate-50 text-sm no-underline inline-block" %>
 </div>
 <div class="mt-8 text-center">
   <%= link_to "back", root_path %>
