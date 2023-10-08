@@ -1,8 +1,10 @@
 class EmojisController < ApplicationController
+  EMOJI_LIMIT = 20
+
   before_action :set_emoji, only: %i[ destroy ]
 
   def index
-    @completed_emojis = Emoji.where(status: :completed).order(created_at: :desc).all
+    @completed_emojis = Emoji.order(created_at: :desc).limit(EMOJI_LIMIT)
     @emoji = Emoji.new
   end
 
