@@ -9,6 +9,10 @@ class Emoji < ApplicationRecord
 
   validates :prompt, presence: true
 
+  def hyphened_prompt
+    prompt.gsub(" ", "-").downcase
+  end
+
   def generate_emoji!
     model = Replicate.client.retrieve_model("fofr/sdxl-emoji")
     version = model.latest_version
