@@ -1,4 +1,4 @@
-<div class="p-4 bg-white shadow-md rounded w-full text-center space-y-8">
+<div class="p-6 bg-white shadow-md rounded-lg w-full text-center space-y-8">
   <h1 class="font-mono text-2xl font-slate-700 font-semibold text-center"><%= @emoji.prompt %></h1>
 
   <%= image_tag url_for(@emoji.without_background), width: 200, height: 200, class: "mx-auto" if @emoji.without_background.persisted? %>
