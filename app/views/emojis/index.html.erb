@@ -5,10 +5,11 @@
 
   <div class="py-[4vh] sm:py-[10vh]">
     <div class="text-center space-y-4">
-      <h1 class="font-bold text-4xl">Rails ✨AI✨ Emoji Generator</h1>
+      <h1 class="font-extrabold text-4xl text-gray-800">Rails ✨AI✨ Emoji Generator</h1>
 
-      <p class="text-gray-500">
-        This is a Rails Emoji Generator inspired by <%= link_to "Alexandru's example", "https://emojis.alexandru.so/", class: "text-pink-400 hover:underline" %>.
+      <p class="text-gray-500 prose">
+        This is a Rails Emoji Generator inspired by <%= link_to "Alexandru's example", "https://emojis.alexandru.so/" %>.
+        We use the <%= link_to "fofr/sdxl-emoji", "https://replicate.com/fofr/sdxl-emoji" %> model on <%= link_to "replicate.com", "https://replicate.com" %> to generate the emoji based on the word you input. Code can be found no <%= link_to "GitHub", "https://github.com/jespr/rails-emoji-generator" %>.
       </p>
     </div>
 

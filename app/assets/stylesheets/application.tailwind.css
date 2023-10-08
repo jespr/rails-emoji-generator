@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  a {
+    @apply text-pink-500 underline underline-offset-2 decoration-1;
+  }
+
+  a:visited {
+    @apply text-pink-300 hover:text-pink-500 no-underline;
   }
 }
-
-*/
