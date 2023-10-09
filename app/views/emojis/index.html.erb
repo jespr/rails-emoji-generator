@@ -18,7 +18,6 @@
   </div>
 
   <h2 class="font-bold mb-4 text-slate-600"><%= EmojisController::EMOJI_LIMIT %> Recently created emojis</h2>
-  <%= turbo_stream_from :emoji %>
   <%= turbo_stream_from :emojis %>
 
   <%= render "emojis", emojis: @completed_emojis %>
