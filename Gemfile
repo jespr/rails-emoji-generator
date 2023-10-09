@@ -70,6 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webmock"
   gem "vcr"
+  gem "mocha"
 end
 
 gem "replicate-ruby", "~> 0.2.3"

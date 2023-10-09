@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  prompt: "Banana"
+  prompt: "banana"
   status: :completed
   prediction_id: 123
 
+processing:
+  prompt: "banana"
+  status: :processing
+  prediction_id: "bsvnvvlbli52immbsvrkmq6g4i"
+
 two:
-  prompt: "Apple"
+  prompt: "apple"
   status: :completed
   prediction_id: 123

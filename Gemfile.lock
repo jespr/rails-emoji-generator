@@ -141,6 +141,8 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    mocha (2.1.0)
+      ruby2_keywords (>= 0.0.5)
     msgpack (1.7.2)
     multipart-post (2.3.0)
     mutex_m (0.1.2)
@@ -290,6 +292,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   importmap-rails
   jbuilder
+  mocha
   puma (>= 5.0)
   rails (~> 7.1.0)
   redis (>= 4.0.1)
