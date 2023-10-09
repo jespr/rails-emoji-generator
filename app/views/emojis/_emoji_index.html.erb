@@ -1,10 +1,10 @@
 <%= turbo_frame_tag dom_id(emoji), class: "flex flex-row no-gap" do %>
-  <%= link_to emoji, id: dom_id(emoji), class: "bg-white rounded shadow w-full p-2 flex space-x-1 items-center text-slate-600 transition-all hover:scale-105 hover:shadow-md no-underline visited:text-slate-600", data: { turbo_frame: "_top" } do %>
+  <%= link_to emoji, id: dom_id(emoji), class: "bg-white rounded shadow w-full p-2 flex space-x-1 items-center text-slate-600 transition-all hover:scale-105 hover:shadow-md no-underline visited:text-slate-600 font-mono truncate overflow-hidden", data: { turbo_frame: "_top" } do %>
     <% if emoji.processing? %>
       <div class="w-[30px] h-[30px] bg-slate-500 animate-pulse rounded-sm"></div>
     <% else %>
       <%= image_tag url_for(emoji.without_background), width: 30, height: 30 if emoji.without_background.persisted? %>
     <% end %>
-    <span class="font-mono">:<%= emoji.hyphened_prompt %>:</span>
+    <span>:<%= emoji.hyphened_prompt %>:</span>
   <% end %>
 <% end %>

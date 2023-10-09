@@ -8,9 +8,16 @@ class Emoji < ApplicationRecord
   after_update_commit -> { broadcast_prepend_to :emojis, partial: "emojis/emoji_index", locals: { emoji: self } }, if: -> { completed? }
 
   validates :prompt, presence: true
+  validates_format_of :prompt, with: /\A[a-zA-Z\-_ ]+\z/, message: 'only allows letters, hyphens, underscores and spaces'
+
+  normalizes :prompt, with: -> (value) { value.strip.downcase }
 
   def hyphened_prompt
     prompt.gsub(" ", "-").downcase
+  end
+
+  def file_name
+    "#{hyphened_prompt}.png"
   end
 
   def generate_emoji!
