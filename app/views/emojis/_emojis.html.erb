@@ -1,5 +1,5 @@
 <%= turbo_frame_tag :emojis, class: "grid grid-cols-1 sm:grid-cols-2 gap-2 justify-items-stretch w-full" do %>
   <% emojis.each do |emoji| %>
-    <%= render "emojis/emoji_index", emoji: emoji %>
+    <%= render emoji %>
   <% end %>
 <% end %>

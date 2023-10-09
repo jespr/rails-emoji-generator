@@ -4,8 +4,8 @@ class Emoji < ApplicationRecord
 
   enum status: { processing: 0, completed: 1, failed: 2 }
 
-  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji_index" }, if: -> { completed? }
-  after_update_commit -> { broadcast_prepend_to :emojis, partial: "emojis/emoji_index", locals: { emoji: self } }, if: -> { completed? }
+  after_update_commit -> { broadcast_replace_to :emoji, target: ActionView::RecordIdentifier.dom_id(self), partial: "emojis/emoji" }, if: -> { completed? }
+  after_update_commit -> { broadcast_prepend_to :emojis, partial: "emojis/emoji", locals: { emoji: self } }, if: -> { completed? }
 
   validates :prompt, presence: true
   validates_format_of :prompt, with: /\A[a-zA-Z\-_ ]+\z/, message: 'only allows letters, hyphens, underscores and spaces'
