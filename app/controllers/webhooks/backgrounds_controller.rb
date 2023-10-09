@@ -9,6 +9,8 @@ module Webhooks
       emoji.without_background.attach(io: URI.open(params[:output]), filename: emoji.file_name)
 
       emoji.update!(status: :completed)
+
+      head :ok
     end
   end
 end

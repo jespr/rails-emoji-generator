@@ -12,6 +12,8 @@ module Webhooks
       emoji.original.attach(io: URI.open(output.first), filename: "emoji.png")
 
       emoji.remove_background!(output.first)
+
+      head :ok
     end
   end
 end

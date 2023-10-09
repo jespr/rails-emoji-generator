@@ -16,7 +16,7 @@ module Webhooks
         assert @emoji.reload.original.attached?
       end
 
-      assert_response :no_content
+      assert_response :ok
     end
   end
 end
