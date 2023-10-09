@@ -4,10 +4,10 @@
 
 @layer components {
   a {
-    @apply text-pink-500 underline underline-offset-2 decoration-1;
+    @apply text-cyan-500 underline underline-offset-2 decoration-1;
   }
 
   a:visited {
-    @apply text-pink-300 hover:text-pink-500 no-underline;
+    @apply text-cyan-300 hover:text-cyan-500 no-underline;
   }
 }
