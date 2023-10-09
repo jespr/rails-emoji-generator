@@ -8,7 +8,7 @@ module Webhooks
       prediction = Replicate.client.retrieve_prediction(emoji.prediction_id)
       output = prediction.output
 
-      emoji.without_background.attach(io: URI.open(output), filename: "emoji_without_background.png")
+      emoji.without_background.attach(io: URI.open(output), filename: emoji.file_name)
 
       emoji.update!(status: :completed)
     end
