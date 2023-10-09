@@ -2,6 +2,10 @@
 
 one:
   prompt: "Banana"
+  status: :completed
+  prediction_id: 123
 
 two:
   prompt: "Apple"
+  status: :completed
+  prediction_id: 123

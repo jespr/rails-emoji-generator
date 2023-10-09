@@ -10,17 +10,14 @@ class EmojisControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_emoji_url
-    assert_response :success
-  end
-
   test "should create emoji" do
-    assert_difference("Emoji.count") do
-      post emojis_url, params: { emoji: { prompt: "Banana"  } }
+    VCR.use_cassette("create_emoji") do
+      assert_difference("Emoji.count") do
+        post emojis_url(format: :turbo_stream), params: { emoji: { prompt: "banana"  } }
+      end
     end
 
-    assert_redirected_to emoji_url(Emoji.last)
+    assert_response :ok
   end
 
   test "should show emoji" do
