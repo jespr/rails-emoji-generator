@@ -4,20 +4,7 @@
     <title>Rails AI Emoji Generator</title>
     <meta name="description" content="Generate emojis from words with just one click">
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://emojis.jesper.dev/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Rails AI Emoji Generator">
-    <meta property="og:description" content="Generate emojis from words with just one click">
-    <meta property="og:image" content="<%= image_url("opengraph.png") %>">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="emojis.jesper.dev">
-    <meta property="twitter:url" content="https://emojis.jesper.dev/">
-    <meta name="twitter:title" content="Rails AI Emoji Generator">
-    <meta name="twitter:description" content="Generate emojis from words with just one click">
-    <meta name="twitter:image" content="<%= image_url("opengraph.png") %>">
+    <%= yield :opengraph_tags %>
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 

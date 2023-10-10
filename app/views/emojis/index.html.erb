@@ -1,3 +1,20 @@
+<%= content_for :opengraph_tags do %>
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://emojis.jesper.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rails AI Emoji Generator">
+  <meta property="og:description" content="Generate emojis from words with just one click">
+  <meta property="og:image" content="<%= image_url("opengraph.png") %>">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="emojis.jesper.dev">
+  <meta property="twitter:url" content="https://emojis.jesper.dev/">
+  <meta name="twitter:title" content="Rails AI Emoji Generator">
+  <meta name="twitter:description" content="Generate emojis from words with just one click">
+  <meta name="twitter:image" content="<%= image_url("opengraph.png") %>">
+<% end %>
+
 <div class="w-full my-2 sm:my-8">
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
