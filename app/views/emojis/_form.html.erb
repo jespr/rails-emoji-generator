@@ -12,8 +12,9 @@
       </div>
     <% end %>
 
-    <div class="my-5 flex-col">
-      <%= form.text_field :prompt, class: "font-mono block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full placeholder:text-slate-300 focus:ring-2 focus:ring-blue-200", placeholder: "cat" %>
+    <div class="my-5 flex-col relative">
+      <%= form.text_field :prompt, class: "peer font-mono block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full placeholder:text-slate-300 focus:ring-2 focus:ring-blue-200", placeholder: "cat" %>
+      <div class="peer-placeholder-shown:opacity-0 absolute border rounded bg-white shadow-sm h-7 px-2 text-slate-500 flex items-center justify-center opacity-100 right-[7px] top-[7px] text-xs font-mono transition">hit enter</div>
     </div>
   <% end %>
 
